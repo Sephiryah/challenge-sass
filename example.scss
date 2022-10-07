@@ -1,0 +1,131 @@
+@import "variable";
+
+@mixin shadow ($color){
+    -webkit-box-shadow: 10px 10px 15px -4px $color;
+    -moz-box-shadow: 10px 10px 15px -4px $color;
+    box-shadow: 10px 10px 15px -4px $color;
+}
+
+body {
+    font: 100% "Space Mono", monospace;
+    color: $dark_gray;
+    margin: 0;
+    padding: $g_padding - $g_padding;
+    background-color: $white;
+    overflow-x: hidden;
+}
+
+main {
+    padding: $g_padding - $g_padding $g_padding;
+}
+
+article {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@for $i from 0 through 6 {
+   .adv-item:nth-child(#{$i}){
+        background-color: darken($orange, 5% * $i );
+        color: lighten($red, 5% * $i);
+   }
+} 
+
+
+article {
+    section {
+        flex-grow: 1;
+        flex-basis: 45%;
+        border: 1px $light_gray solid;
+        @include shadow($dark_gray);
+        padding: $g_padding;
+        margin: 16px;
+        clear: both;
+        overflow: auto;
+        box-sizing: border-box;
+    }
+}
+
+article {
+    #sellin-points {
+        flex-grow: 2;
+        flex-basis: 100%;
+    }
+}
+
+article {
+    code {
+        background: $black;
+        border: 1px solid $dark_gray;
+        color: $light_gray;
+        page-break-inside: avoid;
+        font-family: monospace;
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 1.6em;
+        max-width: 100%;
+        overflow: auto;
+        padding: $g_padding;
+        display: block;
+        word-wrap: break-word;
+    }
+}
+
+article {
+    .before{
+        float: left;
+        width: 40%;
+    }
+}
+
+article {
+    .after {
+        float: right;
+        width: 40%;
+    }
+}
+
+h1,
+h2,
+h3 {
+    color: $pink;
+}
+
+h1 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.5em;
+    padding: $g_padding + $g_padding;
+    margin-bottom: 0px;
+}
+
+.messages {
+    padding: $g_padding;
+}
+
+.success,
+.error,
+%warning {
+    border: 1px solid $light_gray;
+    padding: $g_padding;
+    color: $white;
+}
+
+.success {
+    @extend %warning;
+    background-color: $green;
+}
+
+.error {
+    @extend %warning;
+    background-color: $red;
+    &:hover{background-color: $green;}
+}
+
+.warning {
+    @extend %warning;
+    background-color: $orange;
+}
